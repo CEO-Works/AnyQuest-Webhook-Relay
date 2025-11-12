@@ -1,13 +1,41 @@
 # AnyQuest Webhook Relay
 
-A standalone webhook relay service that receives webhooks from AnyQuest API and broadcasts them via WebSocket to your apps.
+A free, public webhook relay service that receives webhooks from AnyQuest API and broadcasts them via WebSocket to your apps.
+
+**Live Service**: `https://anyquest-webhook-relay-production.up.railway.app`
 
 ## Why Use This?
 
 - **Reusable**: One webhook service for all your AnyQuest projects
-- **No ngrok needed**: Deploy once on Railway, use everywhere
-- **Local development**: Connect your local apps to this relay to receive webhook responses
-- **Multiple apps**: Multiple apps can listen to different webhook IDs simultaneously
+- **No ngrok needed**: Works with local development without tunneling
+- **Easy to use**: Just generate a UUID and connect via WebSocket
+- **Multiple apps**: Multiple apps can use it simultaneously
+- **Free & Open Source**: Use the public service or deploy your own
+
+## 📖 Documentation
+
+**[→ Read the Complete Usage Guide](USAGE.md)**
+
+The usage guide includes:
+- Quick start tutorial
+- Complete code examples (Node.js & Browser)
+- API reference
+- Best practices
+- Troubleshooting
+
+## ⚠️ Security Notice
+
+**This is a PUBLIC service** - anyone with the URL can use it:
+- ✅ Great for development and testing
+- ✅ Perfect for non-sensitive data
+- ⚠️ **DO NOT** send confidential or sensitive information
+- ⚠️ No authentication required (by design)
+- ⚠️ Messages are not logged, but transit through public infrastructure
+
+**For production apps with sensitive data:**
+- Deploy your own private instance (see below)
+- Add authentication (API keys, tokens)
+- Use environment variables for API keys
 
 ## How It Works
 

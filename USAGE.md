@@ -3,7 +3,7 @@
 A free, public webhook relay service for receiving AnyQuest API callbacks via WebSocket.
 
 ## Service URL
-**Production**: `https://anyquest-webhook-relay-production.up.railway.app`
+**Production**: `https://anyquest-webhook-relay-production-863f.up.railway.app`
 
 ## What This Service Does
 
@@ -27,7 +27,7 @@ const webhookId = randomUUID(); // e.g., "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 Connect to the relay's WebSocket endpoint with your webhook ID:
 
 ```javascript
-const ws = new WebSocket(`wss://anyquest-webhook-relay-production.up.railway.app/ws?id=${webhookId}`);
+const ws = new WebSocket(`wss://anyquest-webhook-relay-production-863f.up.railway.app/ws?id=${webhookId}`);
 
 ws.onopen = () => {
   console.log('Connected to webhook relay');
@@ -64,7 +64,7 @@ Use the relay's webhook URL in your AnyQuest API request:
 curl -X POST https://api.anyquest.ai/run \
   -H "x-api-key: YOUR_ANYQUEST_API_KEY" \
   -F "prompt=Your topic here" \
-  -F "webhook=https://anyquest-webhook-relay-production.up.railway.app/webhook/${webhookId}"
+  -F "webhook=https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/${webhookId}"
 ```
 
 **Using axios (Node.js):**
@@ -74,7 +74,7 @@ const FormData = require('form-data');
 
 const formData = new FormData();
 formData.append('prompt', 'Your topic here');
-formData.append('webhook', `https://anyquest-webhook-relay-production.up.railway.app/webhook/${webhookId}`);
+formData.append('webhook', `https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/${webhookId}`);
 
 const response = await axios.post('https://api.anyquest.ai/run', formData, {
   headers: {
@@ -90,7 +90,7 @@ console.log('Job ID:', response.data.jobId);
 ```javascript
 const formData = new FormData();
 formData.append('prompt', 'Your topic here');
-formData.append('webhook', `https://anyquest-webhook-relay-production.up.railway.app/webhook/${webhookId}`);
+formData.append('webhook', `https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/${webhookId}`);
 
 const response = await fetch('https://api.anyquest.ai/run', {
   method: 'POST',
@@ -121,7 +121,7 @@ async function getAnyQuestSummary(topic, apiKey) {
   const webhookId = randomUUID();
 
   // 2. Connect to relay WebSocket
-  const ws = new WebSocket(`wss://anyquest-webhook-relay-production.up.railway.app/ws?id=${webhookId}`);
+  const ws = new WebSocket(`wss://anyquest-webhook-relay-production-863f.up.railway.app/ws?id=${webhookId}`);
 
   return new Promise((resolve, reject) => {
     ws.on('open', async () => {
@@ -131,7 +131,7 @@ async function getAnyQuestSummary(topic, apiKey) {
         // 3. Send request to AnyQuest
         const formData = new FormData();
         formData.append('prompt', topic);
-        formData.append('webhook', `https://anyquest-webhook-relay-production.up.railway.app/webhook/${webhookId}`);
+        formData.append('webhook', `https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/${webhookId}`);
 
         const response = await axios.post('https://api.anyquest.ai/run', formData, {
           headers: {
@@ -196,7 +196,7 @@ getAnyQuestSummary('Artificial Intelligence', 'YOUR_API_KEY')
       const webhookId = generateUUID();
 
       // Connect to relay WebSocket
-      const ws = new WebSocket(`wss://anyquest-webhook-relay-production.up.railway.app/ws?id=${webhookId}`);
+      const ws = new WebSocket(`wss://anyquest-webhook-relay-production-863f.up.railway.app/ws?id=${webhookId}`);
 
       ws.onopen = async () => {
         output.textContent = 'Connected! Submitting to AnyQuest...';
@@ -204,7 +204,7 @@ getAnyQuestSummary('Artificial Intelligence', 'YOUR_API_KEY')
         // Send to AnyQuest
         const formData = new FormData();
         formData.append('prompt', topic);
-        formData.append('webhook', `https://anyquest-webhook-relay-production.up.railway.app/webhook/${webhookId}`);
+        formData.append('webhook', `https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/${webhookId}`);
 
         try {
           const response = await fetch('https://api.anyquest.ai/run', {
@@ -247,8 +247,8 @@ Returns service information and usage instructions.
 {
   "service": "AnyQuest Webhook Relay",
   "usage": {
-    "webhook": "https://anyquest-webhook-relay-production.up.railway.app/webhook/:id",
-    "websocket": "wss://anyquest-webhook-relay-production.up.railway.app/ws?id=:id",
+    "webhook": "https://anyquest-webhook-relay-production-863f.up.railway.app/webhook/:id",
+    "websocket": "wss://anyquest-webhook-relay-production-863f.up.railway.app/ws?id=:id",
     "description": "..."
   }
 }
@@ -398,13 +398,13 @@ ws.onmessage = (event) => {
 ### "Application failed to respond" (502 error)
 - The relay service might be starting up (Railway cold start)
 - Wait 30 seconds and try again
-- Check https://anyquest-webhook-relay-production.up.railway.app/health
+- Check https://anyquest-webhook-relay-production-863f.up.railway.app/health
 
 ## Support
 
 This is a free, community service for AnyQuest API users.
 
-- **GitHub**: https://github.com/mavrikeka/AnyQuest-Webhook-Relay
+- **GitHub**: https://github.com/CEO-Works/AnyQuest-Webhook-Relay
 - **Issues**: Report bugs or request features on GitHub
 
 ## Privacy & Security
@@ -423,7 +423,7 @@ For production applications with sensitive data, consider:
 
 Want to run your own private relay?
 
-1. Fork the repository: https://github.com/mavrikeka/AnyQuest-Webhook-Relay
+1. Fork the repository: https://github.com/CEO-Works/AnyQuest-Webhook-Relay
 2. Deploy to Railway, Heroku, or any Node.js host
 3. Set your own domain
 4. Add authentication if desired

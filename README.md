@@ -2,7 +2,7 @@
 
 A free, public webhook relay service that receives webhooks from AnyQuest API and broadcasts them via WebSocket to your apps.
 
-**Live Service**: `https://anyquest-webhook-relay-production.up.railway.app`
+**Live Service**: `https://anyquest-webhook-relay-production-863f.up.railway.app`
 
 ## Why Use This?
 
